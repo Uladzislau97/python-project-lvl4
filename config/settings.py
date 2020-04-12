@@ -10,10 +10,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')p5$ttulf(*-d$p+*g3&o(9e__1h%7=oyn6vod1yzx7f9b_4_4'
+SECRET_KEY = os.getenv('SECRET_KEY')
+
+ENVIRONMENT = os.getenv('ENVIRONMENT')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv('DEBUG', 'true').lower() in {'yes', '1', 'true'}
 
 ALLOWED_HOSTS = []
 
@@ -122,15 +124,26 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 
 # Rollbar config
 ROLLBAR = {
-    'access_token': 'b88f28a3bba542568c8445db46036035',
-    'environment': 'development' if DEBUG else 'production',
+    'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
+    'environment': ENVIRONMENT,
     'branch': 'master',
     'root': BASE_DIR,
 }
+
+if ENVIRONMENT == 'production':
+    SECURE_HSTS_SECONDS = 1
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_REFERRER_POLICY = 'strict-origin'
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())

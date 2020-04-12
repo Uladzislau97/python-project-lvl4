@@ -14,6 +14,9 @@ migrate:
 lint:
 	@poetry run flake8 config
 
+check-deploy:
+	@poetry run python manage.py check --deploy
+
 setup-requirements:
 	@poetry run pip freeze > requirements.txt
 
