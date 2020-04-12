@@ -2,3 +2,6 @@ django>=3.0,<3.1
 django-bootstrap4>=1.1,<1.2
 rollbar>=0.14,<0.15
 flake8>=3.7,<3.8
+psycopg2==2.7.5 # necessary for correct installation of django-heroku
+django-heroku>=0.3,<0.4
+gunicorn>=20.0,<20.1

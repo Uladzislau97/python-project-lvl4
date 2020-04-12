@@ -9,3 +9,6 @@ lint:
 
 migrate:
 	python root/manage.py migrate
+
+check-deploy:
+	python root/manage.py check --deploy
