@@ -21,7 +21,7 @@ setup-requirements:
 	@poetry run pip freeze > requirements.txt
 
 deploy: setup-requirements
-	git push -f heroku
+	git push heroku master
 
 logs:
 	heroku logs --tail
