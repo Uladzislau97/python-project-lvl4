@@ -10,7 +10,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'ix47ole0mw51ify=ru)cl!j^d09n8!2a7u@zt(1t8=rsd8)7p&'
+SECRET_KEY = ')p5$ttulf(*-d$p+*g3&o(9e__1h%7=oyn6vod1yzx7f9b_4_4'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -21,16 +21,17 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'home.apps.HomeConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'config',
 ]
 
 MIDDLEWARE = [
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddlewareOnly404',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -38,10 +39,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'rollbar.contrib.django.middleware.RollbarNotifierMiddleware',
+    'rollbar.contrib.django.middleware.RollbarNotifierMiddlewareExcluding404',
 ]
 
-ROOT_URLCONF = 'root.urls'
+ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
     {
@@ -59,7 +60,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'root.wsgi.application'
+WSGI_APPLICATION = 'config.wsgi.application'
 
 
 # Database
@@ -123,12 +124,13 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# Rollbar config
 ROLLBAR = {
-    'access_token': 'POST_SERVER_ITEM_ACCESS_TOKEN',
+    'access_token': 'b88f28a3bba542568c8445db46036035',
     'environment': 'development' if DEBUG else 'production',
     'branch': 'master',
-    'root': '/root',
+    'root': BASE_DIR,
 }
 
-# Configure Django App for Heroku.
+# Activate Django-Heroku.
 django_heroku.settings(locals())

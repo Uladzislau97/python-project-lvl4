@@ -1,20 +1,24 @@
 install:
-	pip install -r requirements.txt
+	@poetry install
 
-run:
-	python root/manage.py runserver 8000
+run-dev:
+	@poetry run python manage.py runserver
 
-lint:
-	flake8 root
+run-wsgi:
+	export DJANGO_SETTINGS_MODULE=config.settings
+	@poetry run gunicorn config.wsgi
 
 migrate:
-	python root/manage.py migrate
+	@poetry run python manage.py migrate
 
-check-deploy:
-	python root/manage.py check --deploy
+lint:
+	@poetry run flake8 config
+
+setup-requirements:
+	@poetry run pip freeze > requirements.txt
+
+deploy: setup-requirements
+	git push -f heroku
 
 logs:
 	heroku logs --tail
-
-deploy:
-	git push -f heroku
