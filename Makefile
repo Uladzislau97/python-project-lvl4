@@ -19,7 +19,7 @@ test:
 
 coverage:
 	@poetry run coverage run --source='.' manage.py test
-	@poetry run coverage report
+	@poetry run coverage xml
 
 check-deploy:
 	@poetry run python manage.py check --deploy
