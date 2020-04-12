@@ -1,1 +1,62 @@
-<h1>Hello, {{ who }}!</h1>
+{# Load the tag library #}
+{% load bootstrap4 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{# Display django.contrib.messages as Bootstrap alerts #}
+{% bootstrap_messages %}
+
+{# Custom style #}
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+        <title>Task Manager</title>
+
+        <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/cover/">
+    </head>
+
+    <body class="text-center bg-dark text-white">
+
+        <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
+            <header class="masthead mb-auto">
+                <div class="inner d-flex justify-content-around">
+                    <h3 class="masthead-brand">Task Manager</h3>
+                    <nav class="nav nav-masthead justify-content-center">
+                    <a class="nav-link active" href="#">Home</a>
+                    <a class="nav-link" href="#">Features</a>
+                    <a class="nav-link" href="#">Contact</a>
+                    </nav>
+                </div>
+            </header>
+
+            <main role="main" class="inner cover">
+                <h1 class="cover-heading">Manage your tasks</h1>
+                <p class="lead">
+                    Systems supports: registration,
+                    authentication, task management, filtration.
+                </p>
+                <p class="lead">
+                    <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
+                </p>
+            </main>
+
+            <footer class="mastfoot mt-auto">
+                <div class="inner">
+                    <p>
+                        <a href="https://github.com/Uladzislau97/python-project-lvl4" target="blank">Source code</a>
+                    </p>
+                </div>
+            </footer>
+        </div>
+    </body>
+</html>
