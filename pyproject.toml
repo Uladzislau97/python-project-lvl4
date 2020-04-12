@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "uladzislau97-task-manager"
-version = "0.1.0"
+version = "0.2.0"
 description = "Task manager"
 authors = ["Uladzislau Vasilyeu <VSvasilyev97@gmail.com>"]
 readme = "README.md"
