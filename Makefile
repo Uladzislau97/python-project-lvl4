@@ -1,8 +1,8 @@
 install:
 	pip install -r requirements.txt
 
-dev:
-	python root/manage.py runserver 3000
+run:
+	python root/manage.py runserver 8000
 
 lint:
 	flake8 root
@@ -12,3 +12,9 @@ migrate:
 
 check-deploy:
 	python root/manage.py check --deploy
+
+logs:
+	heroku logs --tail
+
+deploy:
+	git push -f heroku
