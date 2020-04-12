@@ -139,15 +139,15 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# Rollbar config
-ROLLBAR = {
-    'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
-    'environment': ENVIRONMENT,
-    'branch': 'master',
-    'root': BASE_DIR,
-}
-
 if ENVIRONMENT == 'production':
+    # Rollbar config
+    ROLLBAR = {
+        'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
+        'environment': ENVIRONMENT,
+        'branch': 'master',
+        'root': BASE_DIR,
+    }
+
     SECURE_HSTS_SECONDS = 1
     SECURE_SSL_REDIRECT = True
     SESSION_COOKIE_SECURE = True
