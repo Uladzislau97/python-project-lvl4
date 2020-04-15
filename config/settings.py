@@ -1,6 +1,7 @@
 import os
 
 import django_heroku
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -11,8 +12,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.getenv('SECRET_KEY')
-
-ENVIRONMENT = os.getenv('ENVIRONMENT')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'true').lower() in {'yes', '1', 'true'}
@@ -88,6 +87,14 @@ SQLITE_SETTINGS = {
 if os.getenv('DB_ENGINE') == 'SQLite':
     DATABASES['default'] = SQLITE_SETTINGS
 
+CONN_MAX_AGE = 500
+
+# Use the DATABASE_URL environment variable
+# https://pypi.org/project/dj-database-url/
+
+if os.getenv('DATABASE_URL'):
+    DATABASES['default'] = dj_database_url.config(conn_max_age=CONN_MAX_AGE)
+
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -139,11 +146,11 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-if ENVIRONMENT == 'production':
+if not DEBUG:
     # Rollbar config
     ROLLBAR = {
         'access_token': os.getenv('ROLLBAR_ACCESS_TOKEN'),
-        'environment': ENVIRONMENT,
+        'environment': os.getenv('ENVIRONMENT'),
         'branch': 'master',
         'root': BASE_DIR,
     }
