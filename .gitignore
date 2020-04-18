@@ -10,3 +10,4 @@ coverage.xml
 tmploads/
 .env
 *.sqlite3
+staticfiles/
