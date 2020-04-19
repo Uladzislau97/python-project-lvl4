@@ -7,6 +7,15 @@ docker-install:
 .env:
 	@test ! -f .env && cp .env.example .env
 
+makemigrations:
+	@poetry run python manage.py makemigrations
+
+docker-makemigrations:
+	docker-compose run django sh -c "make makemigrations"
+
+production-makemigrations:
+	heroku run python manage.py makemigrations
+
 migrate:
 	@poetry run python manage.py migrate
 
