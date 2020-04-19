@@ -79,7 +79,7 @@ check-deploy:
 setup-requirements:
 	@poetry run pip freeze > requirements.txt
 
-deploy: setup-requirements production-migrate production-collectstatic
+deploy: setup-requirements production-makemigrations production-migrate production-collectstatic
 	git push heroku master
 
 logs:
