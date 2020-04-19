@@ -6,5 +6,6 @@ from config import views
 urlpatterns = [
     path('', views.index),
     path('', include('django.contrib.auth.urls')),
+    path('tasks/', include('tasks.urls')),
     path('admin/', admin.site.urls),
 ]

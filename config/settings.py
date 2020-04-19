@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'config',
     'accounts.apps.AccountsConfig',
+    'tasks.apps.TasksConfig',
 ]
 
 MIDDLEWARE = [
