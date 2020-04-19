@@ -74,8 +74,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('POSTGRES_DB', 'postgres'),
         'USER': os.getenv('POSTGRES_USER', 'postgres'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'password'),
-        'HOST': os.getenv('POSTGRES_HOST', 'postgres'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', ''),
+        'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
         'PORT': os.getenv('POSTGRES_PORT', '5432'),
     },
 }
@@ -87,17 +87,6 @@ SQLITE_SETTINGS = {
 
 if os.getenv('DB_ENGINE') == 'SQLite':
     DATABASES['default'] = SQLITE_SETTINGS
-
-if 'TRAVIS' in os.environ:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': 'travis_ci_test',
-            'USER': 'postgres',
-            'HOST': 'localhost',
-            'PORT': '5432',
-        },
-    }
 
 CONN_MAX_AGE = 500
 
