@@ -8,6 +8,7 @@ env:
   global:
     - CC_TEST_REPORTER_ID=651fcc97eae2b0dff73bf2106e578a378193ab1aa30a49dd29bd389a537b9b28
     - SECRET_KEY=abc123
+    - PGPORT=5432
 
 before_script:
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
