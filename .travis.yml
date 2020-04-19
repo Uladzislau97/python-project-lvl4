@@ -1,6 +1,9 @@
 language: python
 python: 3.8
 
+services:
+  - postgresql
+
 env:
   global:
     - CC_TEST_REPORTER_ID=651fcc97eae2b0dff73bf2106e578a378193ab1aa30a49dd29bd389a537b9b28
@@ -15,6 +18,7 @@ install: make
 
 before_install:
   - pip3 install poetry
+  - psql -c 'create database travis_ci_test;' -U postgres
 
 install:
   - make install
