@@ -88,6 +88,17 @@ SQLITE_SETTINGS = {
 if os.getenv('DB_ENGINE') == 'SQLite':
     DATABASES['default'] = SQLITE_SETTINGS
 
+if 'TRAVIS' in os.environ:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'travis_ci_test',
+            'USER': 'postgres',
+            'HOST': 'localhost',
+            'PORT': '5432',
+        },
+    }
+
 CONN_MAX_AGE = 500
 
 # Use the DATABASE_URL environment variable
