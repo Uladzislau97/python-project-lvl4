@@ -20,6 +20,7 @@ install:
   - make install
 
 script:
+  - make migrate
   - make lint
   - make coverage
 
