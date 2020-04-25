@@ -3,4 +3,6 @@
 
 {% block content %}
 Profile page {{ user.email }}
+
+<a href="{% url 'accounts:password_change' %}">Change Password</a>
 {% endblock %}
