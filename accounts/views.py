@@ -13,7 +13,7 @@ class RegistrationView(CreateView):
 
 
 class CustomPasswordChangeView(PasswordChangeView):
-    template_name = 'accounts/password_change.html'
+    template_name = 'registration/password_change.html'
     success_url = reverse_lazy('accounts:password_change_done')
 
 
