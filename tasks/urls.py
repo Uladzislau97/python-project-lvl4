@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 
 from tasks.views import (
     TaskListView,
+    TaskCreateView,
     TaskStatusListView,
     TagListView,
 )
@@ -13,6 +14,11 @@ urlpatterns = [
         '',
         login_required(TaskListView.as_view()),
         name='task_list',
+    ),
+    path(
+        'add/',
+        login_required(TaskCreateView.as_view()),
+        name='task_add',
     ),
     path(
         'statuses/',
