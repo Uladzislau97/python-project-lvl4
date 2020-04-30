@@ -1,9 +1,8 @@
-from django.shortcuts import render, redirect
+from django.views.generic.list import ListView
+
+from tasks.models import Task
 
 
-def index(request):
-    if not request.user.is_authenticated:
-        return redirect('accounts:login')
-
-    context = {'user': request.user}
-    return render(request, 'tasks/index.html', context)
+class TaskListView(ListView):
+    model = Task
+    template_name = 'tasks/task_list.html'

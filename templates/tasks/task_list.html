@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+<h1>Tasks for {{user.email}}</h1>
+{% endblock %}
+
+{% block content %}
+<ul>
+    {% for task in object_list %}
+      <li>{{ task.name }}</li>
+    {% empty %}
+      <li>No tasks yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
