@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+<h1>Tags for {{user.email}}</h1>
+{% endblock %}
+
+{% block content %}
+<ul>
+    {% for tag in object_list %}
+      <li>{{ tag.name }}</li>
+    {% empty %}
+      <li>No tags yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}

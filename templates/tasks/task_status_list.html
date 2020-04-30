@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}
+<h1>Task statuses for {{user.email}}</h1>
+{% endblock %}
+
+{% block content %}
+<ul>
+    {% for status in object_list %}
+      <li>{{ status.name }}</li>
+    {% empty %}
+      <li>No statuses yet.</li>
+    {% endfor %}
+</ul>
+{% endblock %}
