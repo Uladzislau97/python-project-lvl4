@@ -4,6 +4,7 @@ from tasks.views import (
     TaskListView,
     TaskCreateView,
     TaskUpdateView,
+    TaskDeleteView,
     TaskStatusListView,
     TagListView,
 )
@@ -23,7 +24,12 @@ urlpatterns = [
     path(
         '<int:pk>/edit',
         TaskUpdateView.as_view(),
-        name='taks_edit',
+        name='task_edit',
+    ),
+    path(
+        '<int:pk>/delete',
+        TaskDeleteView.as_view(),
+        name='task_delete',
     ),
     path(
         'statuses/',
