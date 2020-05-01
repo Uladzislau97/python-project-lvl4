@@ -16,6 +16,18 @@ class TaskListView(LoginRequiredMixin, ListView):
     model = Task
     template_name = 'tasks/task_list.html'
 
+    def get_queryset(self):
+        assigned_to = self.request.GET.get('assigned_to', None)
+        tag = self.request.GET.get('tag', None)
+        status = self.request.GET.get('status', None)
+        if assigned_to:
+            return Task.objects.filter(assigned_to__pk=assigned_to)
+        elif status:
+            return Task.objects.filter(status__pk=status)
+        elif tag:
+            return Task.objects.filter(tags__pk=tag)
+        return Task.objects.all()
+
 
 class TaskDetailView(LoginRequiredMixin, DetailView):
     login = '/login/'
