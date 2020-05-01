@@ -43,7 +43,9 @@
             </div>
         </header>
 
-        {% block title %}{% endblock %}
-        {% block content %}{% endblock %}
+        <div class="container min-vh-100">
+            <h2>{% block title %}{% endblock %}</h2>
+            {% block content %}{% endblock %}
+        </div>
     </body>
 </html>
