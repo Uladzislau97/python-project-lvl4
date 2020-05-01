@@ -5,8 +5,14 @@
 {% endblock %}
 
 {% block content %}
+<form method="get">
+    {{ filter.form.as_p }}
+    <input type="submit" />
+</form>
+<a href="{% url 'tasks:task_list' %}">Clear filters</a>
+<a href="{% url 'tasks:task_list'  %}?assigned_to={{request.user.pk}}">My tasks</a>
 <ul>
-    {% for task in object_list %}
+    {% for task in filter.qs %}
         <li>
             <p>{{ task.name }}</p>
             <p><a href="{% url 'tasks:task_detail' task.id %}">Detail</a></p>
