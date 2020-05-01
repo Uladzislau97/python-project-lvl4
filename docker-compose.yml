@@ -25,6 +25,8 @@ services:
       - "8000:8000"
     depends_on:
       - postgres
+    stdin_open: true
+    tty: true
 
 volumes:
   postgres_volume:
