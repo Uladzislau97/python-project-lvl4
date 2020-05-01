@@ -1,19 +1,36 @@
 {% extends "base.html" %}
-
-{% block title %}
-<h1>Tags for {{user.email}}</h1>
-{% endblock %}
+{% load bootstrap4 %}
 
 {% block content %}
-<ul>
-    {% for tag in object_list %}
-      <li>
-        <p>{{ tag.name }}</p>
-        <p><a href="{% url 'tasks:tag_delete' tag.id %}">Delete</a></p>
-      </li>
-    {% empty %}
-      <li>No tags yet.</li>
-    {% endfor %}
-</ul>
-<a href="{% url 'tasks:tag_add' %}">Add tag</a>
+<div class="row h-auto">
+    <div class="col-sm-12 mx-auto">
+        <div class="card">
+            <div class="card-title bg-success text-white p-3">
+                <p class="h4">Tags</p>
+            </div>
+            <div class="card-body">
+                {% if object_list|length > 0 %}
+                <div class="list-group list-group-flush">
+                    {% for tag in object_list %}
+                    <div class="list-group-item row">
+                        <span>{{ tag }}</span>
+                        <span class="float-right">
+                            <a href="{% url 'tasks:tag_delete' tag.id %}" class="text-success">
+                                Delete
+                            </a>
+                        </span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% else %}
+                <p>No tags</p>
+                {% endif %}
+
+                <a href="{% url 'tasks:tag_add' %}" class="btn btn-success mt-4">
+                    Add tag
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
