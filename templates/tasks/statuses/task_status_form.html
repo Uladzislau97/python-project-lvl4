@@ -1,8 +1,21 @@
 {% extends "base.html" %}
+{% load bootstrap4 %}
 
 {% block content %}
-<form method="post">{% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" value="Save">
-</form>
+<div class="row h-auto">
+    <div class="col-sm-8 mx-auto pt-5">
+        <div class="card">
+            <div class="card-title bg-success text-white p-3">
+                <p class="h4">Add status</p>
+            </div>
+            <div class="card-body">
+                <form method="post" class="form">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    {% bootstrap_button "Save" button_class="btn-success" %}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
