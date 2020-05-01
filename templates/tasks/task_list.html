@@ -61,21 +61,23 @@
                             </span>
                         </div>
                         <div class="mt-2">
+                            {% if task.assigned_to %}
                             Assigned to:
                             <span class="badge badge-primary badge-pill p-2">{{ task.assigned_to }}</span>
+                            {% else %}
+                            Not Assigned
+                            {% endif %}
                         </div>
                         <div class="mt-2">
                             Status:
                             <span class="badge badge-warning badge-pill p-2">{{ task.status }}</span>
                         </div>
-                        {% if tag_list|length > 0 %}
                         <div class="mt-2">
                             Tags:
-                            {% for tag in tag_list %}
+                            {% for tag in task.tags.all %}
                             <span class="badge badge-info badge-pill p-2">{{ tag }}</span>
                             {% endfor %}
                         </div>
-                        {% endif %}
                     </div>
                     {% endfor %}
                 </div>

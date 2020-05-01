@@ -1,8 +1,20 @@
 {% extends "base.html" %}
+{% load bootstrap4 %}
 
 {% block content %}
-<form method="post">{% csrf_token %}
-    <p>Are you sure you want to delete "{{ object }}"?</p>
-    <input type="submit" value="Confirm">
-</form>
+<div class="row h-auto">
+    <div class="col-sm-8 mx-auto pt-5">
+        <div class="card">
+            <div class="card-title bg-success text-white p-3">
+                <p class="h4">Delete task "{{ object }}"?</p>
+            </div>
+            <div class="card-body">
+            <form method="post">
+                {% csrf_token %}
+                <input type="submit" value="Confirm" class="btn btn-success">
+            </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

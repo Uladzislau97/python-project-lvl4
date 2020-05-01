@@ -28,11 +28,6 @@ class TaskDetailView(LoginRequiredMixin, DetailView):
     model = Task
     template_name = 'tasks/task_detail.html'
 
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context['tag_list'] = context['object'].tags.all()
-        return context
-
 
 class TaskCreateView(LoginRequiredMixin, CreateView):
     login_url = '/login/'
@@ -48,6 +43,11 @@ class TaskCreateView(LoginRequiredMixin, CreateView):
     template_name = 'tasks/task_form.html'
     success_url = reverse_lazy('tasks:task_list')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Add task'
+        return context
+
 
 class TaskUpdateView(LoginRequiredMixin, UpdateView):
     login_url = '/login/'
@@ -62,6 +62,11 @@ class TaskUpdateView(LoginRequiredMixin, UpdateView):
     ]
     template_name = 'tasks/task_form.html'
     success_url = reverse_lazy('tasks:task_list')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Edit task'
+        return context
 
 
 class TaskDeleteView(LoginRequiredMixin, DeleteView):
