@@ -7,9 +7,13 @@
 {% block content %}
 <ul>
     {% for tag in object_list %}
-      <li>{{ tag.name }}</li>
+      <li>
+        <p>{{ tag.name }}</p>
+        <p><a href="{% url 'tasks:tag_delete' tag.id %}">Delete</a></p>
+      </li>
     {% empty %}
       <li>No tags yet.</li>
     {% endfor %}
 </ul>
+<a href="{% url 'tasks:tag_add' %}">Add tag</a>
 {% endblock %}
