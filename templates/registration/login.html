@@ -2,9 +2,20 @@
 {% load bootstrap4 %}
 
 {% block content %}
-<form action="{% url 'accounts:login' %}" method="post" class="form">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    {% bootstrap_button "Log in" %}
-</form>
+<div class="row h-auto mt-5 pt-5">
+    <div class="col-sm-8 mt-5 mx-auto">
+        <div class="card">
+            <div class="card-title bg-success text-white p-3">
+                <p class="h4">Login</p>
+            </div>
+            <div class="card-body">
+                <form action="{% url 'accounts:login' %}" method="post" class="form">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    {% bootstrap_button "Login"  button_class="btn-success" %}
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock content %}

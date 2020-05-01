@@ -2,20 +2,18 @@
 {% load bootstrap4 %}
 
 {% block content %}
-<div class="container">
-    <div class="row">
-       <div class="col-md-10 col-lg-6 offset-md-1 offset-lg-3">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Registration</h3>
-                </div>
-                <div class="card-body">
-                    <form action="" method="post" class="form">
-                        {% csrf_token %}
-                        {% bootstrap_form form %}
-                        {% bootstrap_button "Register" %}
-                    </form>
-                </div>
+<div class="row h-auto mt-5">
+    <div class="col-sm-8 mx-auto">
+        <div class="card">
+            <div class="card-title bg-success text-white p-3">
+                <p class="h4">Registration</p>
+            </div>
+            <div class="card-body">
+                <form action="" method="post" class="form">
+                    {% csrf_token %}
+                    {% bootstrap_form form %}
+                    {% bootstrap_button "Sign Up" button_class="btn-success" %}
+                </form>
             </div>
         </div>
     </div>
