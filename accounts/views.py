@@ -1,7 +1,8 @@
 from django.urls import reverse_lazy
 from django.views.generic.edit import CreateView
-from django.shortcuts import render, redirect
+from django.views.generic import TemplateView
 from django.contrib.auth.views import PasswordChangeView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from accounts.forms import CustomUserCreationForm
 
@@ -17,9 +18,6 @@ class CustomPasswordChangeView(PasswordChangeView):
     success_url = reverse_lazy('accounts:password_change_done')
 
 
-def profile(request):
-    if not request.user.is_authenticated:
-        return redirect('accounts:login')
-
-    context = {'user': request.user}
-    return render(request, 'accounts/profile.html', context)
+class ProfileView(LoginRequiredMixin, TemplateView):
+    login_url = '/login/'
+    template_name = 'accounts/profile.html'

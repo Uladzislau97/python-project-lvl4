@@ -2,7 +2,7 @@
 {% load bootstrap4 %}
 
 {% block content %}
-Profile page {{ user.email }}
+Profile page {{ request.user.email }}
 
 <a href="{% url 'accounts:password_change' %}">Change Password</a>
 {% endblock %}

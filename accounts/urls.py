@@ -3,7 +3,7 @@ from django.contrib.auth.views import PasswordChangeDoneView
 
 from accounts.views import (
     RegistrationView,
-    profile,
+    ProfileView,
     CustomPasswordChangeView,
 )
 
@@ -24,5 +24,5 @@ urlpatterns = [
     ),
     path('', include('django.contrib.auth.urls')),
     path('registration/', RegistrationView.as_view(), name='registration'),
-    path('accounts/profile/', profile, name='profile'),
+    path('accounts/profile/', ProfileView.as_view(), name='profile'),
 ]

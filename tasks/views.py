@@ -1,5 +1,6 @@
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
 
 from tasks.models import (
@@ -9,12 +10,14 @@ from tasks.models import (
 )
 
 
-class TaskListView(ListView):
+class TaskListView(LoginRequiredMixin, ListView):
+    login_url = '/login/'
     model = Task
     template_name = 'tasks/task_list.html'
 
 
-class TaskCreateView(CreateView):
+class TaskCreateView(LoginRequiredMixin, CreateView):
+    login_url = '/login/'
     model = Task
     fields = [
         'name',
@@ -28,7 +31,8 @@ class TaskCreateView(CreateView):
     success_url = reverse_lazy('tasks:task_list')
 
 
-class TaskUpdateView(UpdateView):
+class TaskUpdateView(LoginRequiredMixin, UpdateView):
+    login_url = '/login/'
     model = Task
     fields = [
         'name',
@@ -42,11 +46,13 @@ class TaskUpdateView(UpdateView):
     success_url = reverse_lazy('tasks:task_list')
 
 
-class TaskStatusListView(ListView):
+class TaskStatusListView(LoginRequiredMixin, ListView):
+    login_url = '/login/'
     model = TaskStatus
     template_name = 'tasks/task_status_list.html'
 
 
-class TagListView(ListView):
+class TagListView(LoginRequiredMixin, ListView):
+    login_url = '/login/'
     model = Tag
     template_name = 'tasks/tag_list.html'
