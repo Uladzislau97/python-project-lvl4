@@ -9,6 +9,7 @@
     {% for task in object_list %}
         <li>
             <p>{{ task.name }}</p>
+            <p><a href="{% url 'tasks:task_detail' task.id %}">Detail</a></p>
             <p><a href="{% url 'tasks:task_edit' task.id %}">Edit</a></p>
             <p><a href="{% url 'tasks:task_delete' task.id %}">Delete</a></p>
         </li>

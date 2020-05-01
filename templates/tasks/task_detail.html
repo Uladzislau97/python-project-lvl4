@@ -1,0 +1,19 @@
+<h2>{{object.name}}</h2>
+<p>Description: {{description}}</p>
+<p>Status: {{object.status}}</p>
+<p>Creator: {{object.creator}}</p>
+
+{% if object.assigned_to %}
+<p>Assigned to: {{object.assigned_to}}</p>
+{% else %}
+<p>Not assigned</p>
+{% endif %}
+
+<p>
+  Tags:
+  <ul>
+    {% for tag in tag_list %}
+    <li>{{tag}}</li>
+    {% endfor %}
+  </ul>
+</p>
