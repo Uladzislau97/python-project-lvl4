@@ -68,7 +68,22 @@ class TaskDeleteView(LoginRequiredMixin, DeleteView):
 class TaskStatusListView(LoginRequiredMixin, ListView):
     login_url = '/login/'
     model = TaskStatus
-    template_name = 'tasks/task_status_list.html'
+    template_name = 'tasks/statuses/task_status_list.html'
+
+
+class TaskStatusCreateView(LoginRequiredMixin, CreateView):
+    login_url = '/login/'
+    model = TaskStatus
+    fields = ['name']
+    template_name = 'tasks/statuses/task_status_form.html'
+    success_url = reverse_lazy('tasks:task_status_list')
+
+
+class TaskStatusDeleteView(LoginRequiredMixin, DeleteView):
+    login_url = '/login/'
+    model = TaskStatus
+    template_name = 'tasks/statuses/task_status_confirm_delete.html'
+    success_url = reverse_lazy('tasks:task_status_list')
 
 
 class TagListView(LoginRequiredMixin, ListView):

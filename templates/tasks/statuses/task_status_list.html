@@ -7,9 +7,13 @@
 {% block content %}
 <ul>
     {% for status in object_list %}
-      <li>{{ status.name }}</li>
+      <li>
+        <p>{{ status.name }}</p>
+        <p><a href="{% url 'tasks:task_status_delete' status.id %}">Delete</a></p>
+      </li>
     {% empty %}
       <li>No statuses yet.</li>
     {% endfor %}
 </ul>
+<a href="{% url 'tasks:task_status_add' %}">Add status</a>
 {% endblock %}
