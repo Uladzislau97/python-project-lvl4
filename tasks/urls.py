@@ -22,7 +22,7 @@ urlpatterns = [
         name='task_list',
     ),
     path(
-        'add/',
+        'new/',
         TaskCreateView.as_view(),
         name='task_add',
     ),
@@ -47,7 +47,7 @@ urlpatterns = [
         name='task_status_list',
     ),
     path(
-        'statuses/add',
+        'statuses/new',
         TaskStatusCreateView.as_view(),
         name='task_status_add',
     ),
@@ -62,7 +62,7 @@ urlpatterns = [
         name='tag_list',
     ),
     path(
-        'tags/add',
+        'tags/new',
         TagCreateView.as_view(),
         name='tag_add',
     ),
