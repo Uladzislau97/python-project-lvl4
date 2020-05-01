@@ -38,9 +38,9 @@
                 <p class="h4">Tasks</p>
             </div>
             <div class="card-body">
-                {% if object_list|length > 0 %}
+                {% if filter.qs|length > 0 %}
                 <div class="list-group list-group-flush">
-                    {% for task in object_list %}
+                    {% for task in filter.qs %}
                     <div class="list-group-item row">
                         <div>
                             <span><b>{{ task }}</b></span>
